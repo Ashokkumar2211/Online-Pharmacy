@@ -1,35 +1,36 @@
 
 // Sample product data with categories
 const products = [
-    { name: 'Product 1', description: 'Description of Product 1.', price: '$19.99', category: 'category1' },
-    { name: 'Product 2', description: 'Description of Product 2.', price: '$24.99', category: 'category2' },
-    { name: 'Product 3', description: 'Description of Product 3.', price: '$29.99', category: 'category1' },
-    { name: 'Product 4', description: 'Description of Product 4.', price: '$29.99', category: 'category1' },
-    { name: 'Product 5', description: 'Description of Product 5.', price: '$29.99', category: 'category1' },
-    { name: 'Product 6', description: 'Description of Product 6.', price: '$29.99', category: 'category1' },
-    { name: 'Product 7', description: 'Description of Product 7.', price: '$29.99', category: 'category1' },
-    { name: 'Product 8', description: 'Description of Product 8.', price: '$29.99', category: 'category1' },
-    { name: 'Product 9', description: 'Description of Product 9.', price: '$29.99', category: 'category1' },
-    { name: 'Product 10', description: 'Description of Product 10.', price: '$29.99', category: 'category1' },
-    { name: 'Product 11', description: 'Description of Product 11.', price: '$29.99', category: 'category1' },
-    { name: 'Product 12', description: 'Description of Product 12.', price: '$29.99', category: 'category1' },
-    { name: 'Product 13', description: 'Description of Product 13.', price: '$29.99', category: 'category1' },
-    { name: 'Product 14', description: 'Description of Product 14.', price: '$19.99', category: 'category1' },
-    { name: 'Product 15', description: 'Description of Product 15.', price: '$24.99', category: 'category2' },
-    { name: 'Product 16', description: 'Description of Product 16.', price: '$29.99', category: 'category1' },
-    { name: 'Product 17', description: 'Description of Product 17.', price: '$29.99', category: 'category1' },
-    { name: 'Product 18', description: 'Description of Product 18.', price: '$29.99', category: 'category1' },
-    { name: 'Product 19', description: 'Description of Product 19.', price: '$29.99', category: 'category1' },
-    { name: 'Product 20', description: 'Description of Product 20.', price: '$29.99', category: 'category1' },
-    { name: 'Product 21', description: 'Description of Product 21.', price: '$29.99', category: 'category1' },
-    { name: 'Product 22', description: 'Description of Product 22.', price: '$29.99', category: 'category1' },
-    { name: 'Product 23', description: 'Description of Product 23.', price: '$29.99', category: 'category1' },
-    { name: 'Product 24', description: 'Description of Product 24.', price: '$29.99', category: 'category1' },
-    { name: 'Product 25', description: 'Description of Product 25.', price: '$29.99', category: 'category1' },
-    { name: 'Product 26', description: 'Description of Product 26.', price: '$29.99', category: 'category1' },
-    { name: 'Product 27', description: 'Description of Product 27.', price: '$29.99', category: 'category1' }
-    // Add more product objects with categories as needed
+    { name: 'Paracetamol Tablets', description: 'Effective for reducing fever and relieving mild to moderate pain.', MRP: '₹  199', category: 'Pain Relief' },
+    { name: 'Ibuprofen Capsules', description: 'Non-prescription pain relief for headaches, muscle aches, and more.', MRP: '₹ 249', category: 'Pain Relief' },
+    { name: 'Aspirin Tablets', description: 'Classic pain reliever for minor aches and pains.', MRP: '₹ 149', category: 'Pain Relief' },
+    { name: 'Diclofenac Gel', description: 'Topical gel for localized pain relief, including arthritis.', MRP: '₹ 349', category: 'Pain Relief' },
+    { name: 'Calcium Supplements', description: 'Supports bone health and muscle function.', MRP: '₹ 269', category: 'Vitamins and Supplements' },
+    { name: 'Vitamin D3 Drops', description: 'Essential for strong bones and a healthy immune system.', MRP: '₹ 199', category: 'Vitamins and Supplements' },
+    { name: 'Probiotic Capsules', description: 'Promotes gut health and digestive balance.', MRP: '₹ 299', category: 'Vitamins and Supplements' },
+    { name: 'Vitamin B Complex', description: 'Boosts energy and supports overall health.', MRP: '₹ 249', category: 'Vitamins and Supplements' },
+    { name: 'Cough Syrup', description: 'Relieves coughs and soothes sore throats.', MRP: '₹ 169', category: 'Cold and Flu Relief' },
+    { name: 'Nasal Saline Spray', description: 'Provides gentle relief for dry or stuffy noses.', MRP: '₹ 119', category: 'Cold and Flu Relief' },
+    { name: 'Antibacterial Hand Gel', description: 'Kills germs and bacteria without water.', MRP: '₹ 99', category: 'Cold and Flu Relief' },
+    { name: 'Emergency First Aid Kit', description: 'Essential supplies for unexpected injuries.', MRP: '₹ 899', category: 'First Aid Supplies' },
+    { name: 'Digital Thermometer', description: 'Quick and accurate temperature readings.', MRP: '₹ 199', category: 'First Aid Supplies' },
+    { name: 'Adhesive Bandages', description: 'Waterproof bandages for minor cuts and scrapes.', MRP: '₹ 69', category: 'First Aid Supplies' },
+    { name: 'Hydrocortisone Cream', description: 'Relieves itching and skin irritations.', MRP: '₹ 149', category: 'First Aid Supplies' },
+    { name: 'Migraine Relief Tablets', description: 'Specially formulated for fast relief from migraine headaches.', MRP: '₹ 349', category: 'Pain Relief' },
+    { name: 'Heat Pain Patch', description: 'Provides long-lasting heat therapy for muscle pain and stiffness.', MRP: '₹ 199', category: 'Pain Relief' },
+    { name: 'Glucosamine Chondroitin Supplements', description: 'Supports joint health and reduces arthritis discomfort.', MRP: '₹ 449', category: 'Pain Relief' },
+    { name: 'Anti-Inflammatory Cream', description: 'Reduces inflammation and swelling due to injuries.', MRP: '₹ 299', category: 'Pain Relief' },
+    { name: 'Vitamin E Capsules', description: 'Promotes skin health and antioxidant protection.', MRP: '₹ 149', category: 'Vitamins and Supplements' },
+    { name: 'Protein Powder', description: 'Provides a source of protein for muscle recovery and growth.', MRP: '₹ 399', category: 'Vitamins and Supplements' },
+    { name: 'Vitamin A Supplements', description: 'Supports eye health and the immune system.', MRP: '₹ 129', category: 'Vitamins and Supplements' },
+    { name: 'Decongestant Tablets', description: 'Relieves sinus congestion and pressure.', MRP: '₹ 109', category: 'Cold and Flu Relief' },
+    { name: 'Vaporizing Rub', description: 'Soothes chest and throat discomfort due to colds.', MRP: '₹ 99', category: 'Cold and Flu Relief' },
+    { name: 'Emergency First Aid Manual', description: 'Comprehensive guide for handling injuries and emergencies.', MRP: '₹ 199', category: 'First Aid Supplies' },
+    { name: 'Alcohol-Free Hand Sanitizer', description: 'Kills germs without drying the skin.', MRP: '₹ 89', category: 'First Aid Supplies' },
+    { name: 'Burn Cream', description: 'Cools and soothes minor burns and sunburns.', MRP: '₹ 99', category: 'First Aid Supplies' },
+    // Add more products as needed
 ];
+
 
 // Define the number of products to display per page
 const productsPerPage = 9;
@@ -81,7 +82,7 @@ function displayProducts() {
             <img src="product${i + 1}.jpg" alt="${product.name}">
             <h2>${product.name}</h2>
             <p>${product.description}</p>
-            <p><strong>Price:</strong> ${product.price}</p>
+            <p><strong>MRP:</strong> ${product.MRP}</p>
             <button onclick="openModal(${i})">Show Details</button>
         `;
 
@@ -103,8 +104,8 @@ function applyFilters() {
     productsToShow.sort((a, b) => {
         if (sortBy === 'name') {
             return a.name.localeCompare(b.name);
-        } else if (sortBy === 'price') {
-            return parseFloat(a.price) - parseFloat(b.price);
+        } else if (sortBy === 'MRP') {
+            return parseFloat(a.MRP) - parseFloat(b.MRP);
         }
     });
 
@@ -171,7 +172,7 @@ function openModal(index) {
     document.getElementById('popupProductImage').src = `product${index + 1}.jpg`;
     document.getElementById('popupProductName').textContent = product.name;
     document.getElementById('popupProductDescription').textContent = product.description;
-    document.getElementById('popupProductPrice').textContent = product.price;
+    document.getElementById('popupProductMRP').textContent = product.MRP;
     document.getElementById('popupProductDosage').textContent = product.dosage || "Not specified";
     document.getElementById('popupProductAvailability').textContent = product.availability || "Not specified";
 
