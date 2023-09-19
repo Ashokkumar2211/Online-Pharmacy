@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medications and Healthcare Products Catalog</title>
+    <style>
+        /* Reset some default styles */
+        body, h1, h2, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Basic styles for the header */
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        /* Styles for the search container */
+        .search-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Styles for the search input and button */
+        #searchInput {
+            width: 300px;
+            padding: 10px;
+        }
+
+        #searchButton {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #searchButton:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styles for the filter container */
+        .filter-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Styles for the sorting and filtering controls */
+        select, button {
+            padding: 10px;
+        }
+
+        /* Styles for the main content */
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+        }
+
+        /* Styles for each product section */
+        .product {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        /* Styles for the "Add to Cart" button */
+        .product button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styles for the footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        /* Styles for the pagination buttons */
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .pagination button:hover {
+            background-color: #0056b3;
+        }
+
+        .pagination button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            padding: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Medications and Healthcare Products</h1>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for products...">
+        <button id="searchButton">Search</button>
+    </div>
+
+    <div class="filter-container">
+        <label for="sortBy">Sort by:</label>
+        <select id="sortBy">
+            <option value="name">Name</option>
+            <option value="price">Price</option>
+        </select>
+        <label for="category">Filter by Category:</label>
+        <select id="category">
+            <option value="all">All</option>
+            <option value="category1">Category 1</option>
+            <option value="category2">Category 2</option>
+            <!-- Add more categories as needed -->
+        </select>
+        <button id="applyFilters">Apply Filters</button>
+    </div>
+
+    <main>
+        <!-- Product sections will be dynamically generated here -->
+    </main>
+    
+    <!-- Product Details Section -->
+    <section class="product-details" id="productDetails" style="display: none;">
+        <img src="" alt="Product Details" id="popupProductImage">
+        <h2 id="popupProductName">Product Name</h2>
+        <p><strong>Description:</strong> <span id="popupProductDescription">Description of Product</span></p>
+        <p><strong>Price:</strong> <span id="popupProductPrice">$0.00</span></p>
+        <p><strong>Dosage Instructions:</strong> <span id="popupProductDosage">Take one tablet daily with water.</span></p>
+        <p><strong>Availability:</strong> <span id="popupProductAvailability">In Stock</span></p>
+        <span class="close" id="closeModal">&times;</span>
+    </section>
+
+    <!-- Modal HTML structure -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeModal">&times;</span>
+            <img src="" alt="Product Details" id="popupProductImage">
+            <h2 id="popupProductName">Product Name</h2>
+            <p><strong>Description:</strong> <span id="popupProductDescription">Description of Product</span></p>
+            <p><strong>Price:</strong> <span id="popupProductPrice">$0.00</span></p>
+            <p><strong>Dosage Instructions:</strong> <span id="popupProductDosage">Take one tablet daily with water.</span></p>
+            <p><strong>Availability:</strong> <span id="popupProductAvailability">In Stock</span></p>
+        </div>
+    </div>
+    
+    <div class="pagination">
+        <button id="prevButton" disabled>Previous</button>
+        <button id="nextButton">Next</button>
+    </div>
+    <footer>
+        <p>&copy; 2023 Medications and Healthcare Products Catalog</p>
+    </footer>
+    <script>
+        // Sample product data with categories
+        const products = [
+            { name: 'Product 1', description: 'Description of Product 1.', price: '$19.99', category: 'category1' },
+            { name: 'Product 2', description: 'Description of Product 2.', price: '$24.99', category: 'category2' },
+            { name: 'Product 3', description: 'Description of Product 3.', price: '$29.99', category: 'category1' },
+            { name: 'Product 4', description: 'Description of Product 4.', price: '$29.99', category: 'category1' },
+            { name: 'Product 5', description: 'Description of Product 5.', price: '$29.99', category: 'category1' },
+            { name: 'Product 6', description: 'Description of Product 6.', price: '$29.99', category: 'category1' },
+            { name: 'Product 7', description: 'Description of Product 7.', price: '$29.99', category: 'category1' },
+            { name: 'Product 8', description: 'Description of Product 8.', price: '$29.99', category: 'category1' },
+            { name: 'Product 9', description: 'Description of Product 9.', price: '$29.99', category: 'category1' },
+            { name: 'Product 10', description: 'Description of Product 10.', price: '$29.99', category: 'category1' },
+            { name: 'Product 11', description: 'Description of Product 11.', price: '$29.99', category: 'category1' },
+            { name: 'Product 12', description: 'Description of Product 12.', price: '$29.99', category: 'category1' },
+            { name: 'Product 13', description: 'Description of Product 13.', price: '$29.99', category: 'category1' }
+            // Add more product objects with categories as needed
+        ];
+
+        // Define the number of products to display per page
+        const productsPerPage = 7;
+
+        // Initialize the current page index
+        let currentPage = 0;
+
+        // Initialize productsToShow array
+        let productsToShow = [];
+
+        // Get references to the "Next" and "Previous" buttons
+        const nextButton = document.getElementById('nextButton');
+        const prevButton = document.getElementById('prevButton');
+
+        // Get references to the search input field and search button
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+
+        // Get references to the sorting and filtering controls
+        const sortBySelect = document.getElementById('sortBy');
+        const categorySelect = document.getElementById('category');
+        const applyFiltersButton = document.getElementById('applyFilters');
+
+        // Get a reference to the product details section
+        const productDetailsSection = document.getElementById('productDetails');
+
+        // Function to display products on the current page
+        function displayProducts() {
+            // Calculate startIndex and endIndex based on currentPage and productsPerPage
+            const startIndex = currentPage * productsPerPage;
+            const endIndex = startIndex + productsPerPage;
+
+            // Get a reference to the main container where products will be displayed
+            const productContainer = document.querySelector('main');
+
+            // Clear the existing product sections
+            productContainer.innerHTML = '';
+
+            // Loop through products and display them on the current page
+            for (let i = startIndex; i < endIndex && i < productsToShow.length; i++) {
+                const product = productsToShow[i];
+
+                // Create a new product section element
+                const productSection = document.createElement('section');
+                productSection.classList.add('product');
+
+                // Set the HTML content of the product section
+                productSection.innerHTML = `
+                    <img src="product${i + 1}.jpg" alt="${product.name}">
+                    <h2>${product.name}</h2>
+                    <p>${product.description}</p>
+                    <p><strong>Price:</strong> ${product.price}</p>
+                    <button onclick="openModal(${i})">Show Details</button>
+                `;
+
+                // Append the product section to the main container
+                productContainer.appendChild(productSection);
+            }
+
+            // Enable/disable navigation buttons based on the current page
+            prevButton.disabled = currentPage === 0;
+            nextButton.disabled = endIndex >= productsToShow.length;
+        }
+
+        // Function to apply sorting and filtering
+        function applyFilters() {
+            const sortBy = sortBySelect.value;
+            const categoryFilter = categorySelect.value;
+
+            // Apply sorting
+            productsToShow.sort((a, b) => {
+                if (sortBy === 'name') {
+                    return a.name.localeCompare(b.name);
+                } else if (sortBy === 'price') {
+                    return parseFloat(a.price) - parseFloat(b.price);
+                }
+            });
+
+            // Apply filtering
+            productsToShow = categoryFilter === 'all'
+                ? products.slice() // Clone the original array
+                : products.filter(product => product.category === categoryFilter);
+
+            // Reset to the first page after filtering
+            currentPage = 0;
+
+            // Display the filtered products
+            displayProducts();
+        }
+
+        // Event listener for the "Apply Filters" button
+        applyFiltersButton.addEventListener('click', () => {
+            applyFilters();
+        });
+
+        // Event listener for changes in sorting and filtering options
+        sortBySelect.addEventListener('change', () => {
+            applyFilters();
+        });
+
+        categorySelect.addEventListener('change', () => {
+            applyFilters();
+        });
+
+        // Function to perform the search
+        function performSearch() {
+            const searchTerm = searchInput.value.toLowerCase();
+
+            // Filter products based on search term
+            productsToShow = products.filter(product =>
+                product.name.toLowerCase().includes(searchTerm) ||
+                product.description.toLowerCase().includes(searchTerm)
+            );
+
+            // Reset to the first page after searching
+            currentPage = 0;
+
+            // Display the search results
+            displayProducts();
+        }
+
+        // Event listener for the search button
+        searchButton.addEventListener('click', () => {
+            performSearch();
+        });
+
+        // Event listener for the Enter key in the search input field
+        searchInput.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                performSearch();
+            }
+        });
+
+        // Function to open the modal with product details
+        function openModal(index) {
+            const product = productsToShow[index];
+
+            // Update modal content
+            document.getElementById('popupProductImage').src = `product${index + 1}.jpg`;
+            document.getElementById('popupProductName').textContent = product.name;
+            document.getElementById('popupProductDescription').textContent = product.description;
+            document.getElementById('popupProductPrice').textContent = product.price;
+            document.getElementById('popupProductDosage').textContent = product.dosage || "Not specified";
+            document.getElementById('popupProductAvailability').textContent = product.availability || "Not specified";
+
+            // Show the modal
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'block';
+
+            // Event listener to close the modal
+            const closeModalButton = document.getElementById('closeModal');
+            closeModalButton.addEventListener('click', () => {
+                modal.style.display = 'none';
+            });
+
+            // Event listener to close the modal when clicking outside the modal content
+            window.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+
+        // Initial product display
+        applyFilters();
+    </script>
+</body>
+</html>
