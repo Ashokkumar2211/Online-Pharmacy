@@ -8,19 +8,22 @@
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #dfd8d8;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            background-image: url(Login.jpg);
+            background-size: cover;
         }
 
         .container {
-            max-width: 400px;
+            max-width: 600px;
+            width: 321px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #fff;
+            background-color: #dfd8d8;
             border-radius: 12px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
         }
@@ -45,10 +48,11 @@
             padding: 10px;
             border-radius: 4px;
             cursor: pointer;
+            margin-left: 10px;
         }
 
         .tab.active {
-            background-color: #0056b3;
+            background-color: skyblue;
         }
 
         form {
@@ -172,6 +176,7 @@
         .continue-as-guest button:hover {
             background-color: #999;
         }
+       
     </style>
 </head>
 <body>
@@ -184,31 +189,31 @@
             <h2>Login</h2>
             <form action="#" method="post">
                 <label for="login-email">Email:</label>
-                <input type="email" id="login-email" name="login-email" required>
+                <input type="email" id="login-email" placeholder="Enter email address" name="login-email" required>
 
                 <label for="login-password">Password:</label>
-                <input type="password" id="login-password" name="login-password" required>
+                <input type="password" id="login-password" placeholder="Enter Password" name="login-password" required>
 
                 <button type="submit">Login</button>
             </form>
-            <div class="continue-as-guest">
-                <button type="button">Continue as Guest</button>
+            <div class="continue-as-guest"  ><a href="Module 2 (1).html">
+                <button type="button">Continue as Guest</button></a>
             </div>
         </div>
         <div class="signup-container">
             <h2>Signup</h2>
             <form action="#" method="post">
                 <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
+                <input type="text" id="name" placeholder="Enter Full Name" name="name" required>
 
                 <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" placeholder="Enter email address" name="email" required>
 
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
+                <input type="password" id="password" placeholder="Enter Password" name="password" required>
 
                 <label for="contact">Contact Number:</label>
-                <input type="tel" id="contact" name="contact">
+                <input type="tel" id="contact" placeholder="Enter phone number" name="contact">
 
                 <label>
                     <input type="checkbox" id="terms" name="terms" required>
